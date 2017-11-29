@@ -1,0 +1,63 @@
+Scanner sc=new Scanner(System.in);
+       
+       int N=sc.nextInt();
+       String S=sc.next();
+       int K=sc.nextInt();
+       StringBuilder sb=new StringBuilder();
+       //sb.append(S);
+      
+       
+       
+        for(int i=0;i<N;i++)
+        {
+            if( S.codePointAt(i)>=0 && S.codePointAt(i)<=64 )
+            {
+              sb.append((char)(S.codePointAt(i)));
+            
+            }
+            else if(S.codePointAt(i)>=91 && S.codePointAt(i)<=96)
+            {
+             sb.append((char)(S.codePointAt(i)));
+            }
+            else if(S.codePointAt(i)>=123)
+            {
+             sb.append((char)(S.codePointAt(i)));
+            }
+            
+            
+            
+            else if(S.codePointAt(i)>=97 && S.codePointAt(i)<=122)
+            {
+                if(S.codePointAt(i)<=(122-(K%26) )&& Character.isLowerCase(S.charAt(i))==true)
+                {
+                    sb.append((char)((S.codePointAt(i))+(K%26)));
+                }
+                
+                else 
+                {
+                int point=122-S.codePointAt(i);
+                sb.append((char)((97+(K%26)-point-1)));
+                }
+            }
+        
+             else if(S.codePointAt(i)>=65 && S.codePointAt(i)<=90)
+            {
+                if(S.codePointAt(i)<=(90-(K%26) )&& Character.isUpperCase(S.charAt(i))==true)
+                {
+                    sb.append((char)((S.codePointAt(i))+(K%26)));
+                }
+                
+                 else 
+                {
+                int point=90-S.codePointAt(i);
+                sb.append((char)((65+(K%26)-point-1)));
+                }
+                
+            }
+            
+        
+        }
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        System.out.println(sb);
+    }
+}
